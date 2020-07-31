@@ -16,9 +16,12 @@
     background-color: green; 
     margin: 0; 
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.controls, .log {
+.controls, .log, .message {
     margin-top: 30px;
     text-align: center;
     padding: 10px;

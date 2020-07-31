@@ -15,14 +15,18 @@
       <div class="small-6 columns">
         <h1 class="text-center">YOU</h1>
         <div class="healthbar">
-          <div class="healthbar-inner text-center" :style="{width: yourHealth + '%'}"></div>
+          <div class="healthbar-inner text-center" :style="{width: yourHealth + '%'}">
+            <p>{{ yourHealth}}</p>
+          </div>
         </div>
       </div>
 
       <div class="small-6 columns">
         <h1 class="text-center">MONSTER</h1>
         <div class="healthbar">
-          <div class="healthbar-inner text-center" :style="{width: monsterHealth + '%'}"></div>
+          <div class="healthbar-inner text-center" :style="{width: monsterHealth + '%'}">
+            <p>{{ monsterHealth}}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -41,10 +45,10 @@
     <!-- CONTROLS -->
     <section class="row controls">
         <div class="small-12 columns">
-            <button id="attack">ATTACK</button>
-            <button id="special-attack">SPECIAL ATTACK</button>
-            <button id="heal">HEAL</button>
-            <button id="give-up">GIVE UP</button>
+            <button id="attack" @click="attack">ATTACK</button>
+            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+            <button id="heal" @click="heal">HEAL</button>
+            <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
     </section>
     <!-- End of CONTROLS -->
@@ -54,13 +58,20 @@
     <section class="row log">
       <div class="small-12 columns">
         <ul>
-          <li>
-            
+          <li v-for="message in log">
+            {{ message }}
           </li>
         </ul>
       </div>
     </section>
     <!-- End of LOG -->
+
+    <section class="row message">
+      <div class="small-12 columns">
+        <p v-if="youWon">You won!</p>
+        <p v-else-if="monsterWon">Monster won!</p>
+      </div>
+    </section>
   </div>
 
 
