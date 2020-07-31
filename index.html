@@ -32,6 +32,15 @@
     </section>
     <!-- End of HEALTH BARS -->
 
+    <!-- Winner message -->
+    <section class="row message">
+      <div class="small-12 columns">
+        <p v-if="youWon">You won!</p>
+        <p v-else-if="monsterWon">Monster won!</p>
+      </div>
+    </section>
+    <!-- End of Winner message -->
+
 
     <!-- START GAME -->
     <section class="row controls">
@@ -58,7 +67,7 @@
     <section class="row log">
       <div class="small-12 columns">
         <ul>
-          <li v-for="message in log">
+          <li v-for="(message, i) in log" :key="i + 1">
             {{ message }}
           </li>
         </ul>
@@ -66,12 +75,6 @@
     </section>
     <!-- End of LOG -->
 
-    <section class="row message">
-      <div class="small-12 columns">
-        <p v-if="youWon">You won!</p>
-        <p v-else-if="monsterWon">Monster won!</p>
-      </div>
-    </section>
   </div>
 
 

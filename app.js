@@ -19,10 +19,12 @@
 
 //// If your health gets to 0, print "You loose!"
 //// If monster health gets to 0, print "You win!"
-// instead of printing it to the console, save it in state and display a message based on that state using v-if
+//// instead of printing it to the console, save it in state and display a message based on that state using v-if
 //// Where do I check this? Do I need to use v-if?
 
 // disable buttons when the game is won or lost?
+
+
 
 new Vue({
   el: '#app',
@@ -76,8 +78,14 @@ new Vue({
     heal: function() {
       // heals 5-20 health points
       const healthGain = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
-      this.yourHealth += healthGain;
-      this.log.push(`You healed ${healthGain} health.`);
+      //This prevents the player's health bar going over 100
+      if (this.yourHealth + healthGain >= 100) {
+        this.log.push(`You healed ${100 - this.yourHealth} health.`);
+        this.yourHealth = 100;
+      } else {
+        this.yourHealth += healthGain;
+        this.log.push(`You healed ${healthGain} health.`);
+      }
     },
     giveUp: function() {
       this.yourHealth = 0;
