@@ -15,8 +15,8 @@
       <div class="small-6 columns">
         <h1 class="text-center">YOU</h1>
         <div class="healthbar">
-          <div class="healthbar-inner text-center" :style="{width: yourHealth + '%'}">
-            <p>{{ yourHealth}}</p>
+          <div class="healthbar-inner text-center" :style="{width: playerHealth + '%'}">
+            <p>{{ playerHealth}}</p>
           </div>
         </div>
       </div>
@@ -32,18 +32,9 @@
     </section>
     <!-- End of HEALTH BARS -->
 
-    <!-- Winner message -->
-    <section class="row message">
-      <div class="small-12 columns">
-        <p v-if="youWon">You won!</p>
-        <p v-else-if="monsterWon">Monster won!</p>
-      </div>
-    </section>
-    <!-- End of Winner message -->
-
 
     <!-- START GAME -->
-    <section class="row controls">
+    <section v-if="!gameIsRunning" class="row controls">
       <div class="small-12 columns">
         <button id="start-game" @click="startNewGame">START NEW GAME</button>
       </div>
@@ -52,7 +43,7 @@
 
 
     <!-- CONTROLS -->
-    <section class="row controls">
+    <section v-else class="row controls">
         <div class="small-12 columns">
             <button id="attack" @click="attack">ATTACK</button>
             <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
